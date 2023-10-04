@@ -20,7 +20,7 @@ app.post('/create-payment-intent', async (req, res) => {
             currency: 'usd',
             payment_method_types: ['card'],
         });
-        console.log("Generated client secret:", paymentIntent.client_secret);
+        console.log("Generated client secret:", JSON.stringify(paymentIntent));
         res.json({
             clientSecret: paymentIntent.client_secret
         });

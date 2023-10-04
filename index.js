@@ -18,7 +18,7 @@ app.post('/create-payment-intent', async (req, res) => {
     console.log(process.env.STRIPE_SECRET_KEY)
     try {
         const paymentIntent = await stripe.paymentIntents.create({
-            correctedAmount,  // using the amount from the request body
+            amount:correctedAmount,  // using the amount from the request body
             currency: 'usd',
             payment_method_types: ['card'],
         });

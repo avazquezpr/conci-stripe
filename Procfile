@@ -1,1 +1,1 @@
-web: node your_custom_script.js
+web: node index.js

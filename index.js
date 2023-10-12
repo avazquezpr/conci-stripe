@@ -14,7 +14,7 @@ app.post('/create-payment-intent', async (req, res) => {
         return res.status(400).json({ error: 'Amount is required' });
     }
 
-    const correctedAmount = amount * 100; // Stripe expects the amount in cents
+    const correctedAmount = Math.round(amount * 100); // Stripe expects the amount in cents
     console.log(process.env.STRIPE_SECRET_KEY)
     try {
         const paymentIntent = await stripe.paymentIntents.create({

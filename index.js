@@ -8,7 +8,7 @@ app.use(express.json());
 app.use(express.static('public'));
 
 app.post('/create-payment-intent', async (req, res) => {
-    const { amount } = req.body;
+    const { amount, metadata } = req.body;
 
     if (!amount) {
         return res.status(400).json({ error: 'Amount is required' });
@@ -21,6 +21,7 @@ app.post('/create-payment-intent', async (req, res) => {
             amount:correctedAmount,  // using the amount from the request body
             currency: 'usd',
             payment_method_types: ['card'],
+            metadata: metadata
         });
         console.log("Generated client secret:", JSON.stringify(paymentIntent));
         res.json({
